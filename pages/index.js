@@ -2,6 +2,8 @@ import React from 'react';
 import { withApollo } from '../libs/apollo';
 import { useQuery } from '@apollo/react-hooks';
 import { ALL_CHARACTERS } from '../gql/allCharacters';
+import Link from 'next/link'
+
 
 const IndexPage = () => {
 	const { loading, error, data } = useQuery(ALL_CHARACTERS);
@@ -14,14 +16,17 @@ const IndexPage = () => {
 		<>
 
 				<h3>Setting up Apollo GraphQL in Next.js with Server Side Rendering</h3>
+				<Link href="/about">
+				 <a>About Us</a>
+			 </Link>
 
-			<div>
+			{/* <div>
 				{data.characters.results.map((data) => (
 					<ul key={data.id}>
 						<li>{data.name}</li>
 					</ul>
 				))}
-			</div>
+			</div> */}
 		</>
 	);
 };

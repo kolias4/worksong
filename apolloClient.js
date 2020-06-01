@@ -9,8 +9,9 @@ export default function createApolloClient(initialState, ctx) {
 	return new ApolloClient({
 		ssrMode: Boolean(ctx),
 		link: new HttpLink({
-			uri: 'https://rickandmortyapi.com/graphql', // Server URL (must be absolute)
+			uri: 'http://worksong.gr/graphql', // Server URL (must be absolute)
 			credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+      
 			fetch,
 		}),
 		cache: new InMemoryCache().restore(initialState),
