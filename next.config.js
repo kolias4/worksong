@@ -1,6 +1,6 @@
 const withPlugins = require('next-compose-plugins');
-const sass = require("@zeit/next-sass")
-const css = require("@zeit/next-css")
+// const sass = require("@zeit/next-sass")
+
 
 const nextConfig = {
   webpack: function (config) {
@@ -24,9 +24,9 @@ const nextConfig = {
 }
 
 module.exports = withPlugins([
-  [sass, {
-     cssModules: false
-   }],
-  [css]
+  // [sass, {
+  //    cssModules: false
+  //  }]
+
 
 ], nextConfig);
