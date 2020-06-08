@@ -1,13 +1,13 @@
 import gql from 'graphql-tag';
 
-export const Footer = gql`
+export const FOOTER = gql`
 query {
-  footerimage:nodeQuery(filter: {conditions: [{field: "title", value: "Footer"}]}, limit: 100){
+  footerimage:nodeQuery(filter: {conditions: [{field:"title",value:"Footer"}]},limit: 100){
       entities{
-        ...on NodeBanner{
+        ... on NodeBanner{
            fieldBannerImage{
              entity{
-              ...on MediaImage{
+              ... on MediaImage{
                 fieldMediaImage{
                   alt
                   url

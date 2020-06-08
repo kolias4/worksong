@@ -4,8 +4,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebook } from "@fortawesome/free-brands-svg-icons"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
+import { withApollo } from '../libs/apollo';
+import { useQuery } from '@apollo/react-hooks';
+import { FOOTER } from '../gql/footer';
 
 const Footer = () => {
+
+  const { loading, error, data } = useQuery(FOOTER);
+  if (error) return <h1>Error</h1>;
+  if (loading) return <h1>Loading...</h1>;
+
+  console.log(data)
+
+
 
 
     return (
@@ -47,7 +58,7 @@ const Footer = () => {
         `
         .footer {
           color: white;
-          background: url(/footer_img.jpg) no-repeat #000 center center;
+          background: url(${data.footerimage.entities[0].fieldBannerImage.entity.fieldMediaImage.url}) no-repeat #000 center center;
           overflow: hidden;
           background-attachment: fixed;
           background-position: 50% 0;
@@ -81,4 +92,6 @@ const Footer = () => {
 
 }
 
-export default Footer;
+export default withApollo({ ssr: true })(Footer);
+
+// export default Footer;

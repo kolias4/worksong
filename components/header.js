@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
 import {Navbar, NavDropdown, Nav} from 'react-bootstrap'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { withApollo } from '../libs/apollo';
+import { useQuery } from '@apollo/react-hooks';
+import { MENU } from '../gql/menu';
+import Link from 'next/link'
 
 
-class Header extends Component {
+const Header = ()=> {
 
-  render() {
+  const { loading, error, data } = useQuery(MENU);
+  if (error) return <h1>Error</h1>;
+  if (loading) return null;
+
+  console.log(data)
+
+
     return (
       <div className="header">
         <Navbar   className="my_navbar" expand="lg">
 <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-<Navbar.Toggle aria-controls="basic-navbar-nav" />
+ <Navbar.Toggle aria-controls="basic-navbar-nav" >
+  <FontAwesomeIcon style={{color:'white'}}  icon={faBars} size="2x" />
+</Navbar.Toggle>
 <Navbar.Collapse id="basic-navbar-nav">
 <Nav className="mx-auto">
-  <Nav.Link href="#home">Home</Nav.Link>
-  <Nav.Link href="#link">Link</Nav.Link>
-  <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-    <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-    <NavDropdown.Divider />
-    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-  </NavDropdown>
+  {data.menu.links.map((item) => {
+    return (
+      <Link href={item.url.path}>
+        <a className="nav-link">{item.label}</a>
+
+      </Link>
+    )
+  })}
+  {/* <Nav.Link href="#home">Home</Nav.Link>
+  <Nav.Link href="#link">Link</Nav.Link> */}
+
 </Nav>
 
 </Navbar.Collapse>
@@ -63,8 +79,9 @@ class Header extends Component {
 
 
     );
-  }
+
 
 }
 
-export default Header;
+// export default Header;
+export default withApollo({ ssr: true })(Header);

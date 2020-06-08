@@ -2,24 +2,55 @@ import gql from 'graphql-tag';
 
 export const ALL_CHARACTERS = gql`
 query {
-nodeById(id:"1"){
- title
+  homeimage:nodeQuery(filter: {conditions: [{field:"title",value:"Homepage"}]},limit: 100){
+      entities{
+        ... on NodeBanner{
+           fieldBannerImage{
+             entity{
+              ... on MediaImage{
+                fieldMediaImage{
+                  alt
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
 
-    ... on NodeArticle {
-     body {
-       value
-     }
-     fieldImage {
-       url
-       alt
-     }
 
-   }
+    videos:nodeQuery(filter: {conditions: [{field:"type",value:"Video"}]},limit: 4){
 
 
 
+  entities{
 
-}
+    ... on NodeVideo{
+      fieldVideoId
+      title
+    }
+
+
+
+  }
+
+
+
+    }
+
+# menu:menuByName(name:"main") {
+#   name
+#   links{
+#     label
+#     url{
+#       path
+#     }
+#   }
+# }
+
+
+
 
 
 }

@@ -3,6 +3,7 @@ import { withApollo } from '../libs/apollo';
 import { useQuery } from '@apollo/react-hooks';
 import { ALL_CHARACTERS } from '../gql/allCharacters';
 import Link from 'next/link'
+import Loading from '../components/loading'
 import {Container,Row,Col} from 'react-bootstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebook } from "@fortawesome/free-brands-svg-icons"
@@ -20,7 +21,7 @@ import YouTube from 'react-youtube';
 const IndexPage = () => {
 	const { loading, error, data } = useQuery(ALL_CHARACTERS);
 	if (error) return <h1>Error</h1>;
-	if (loading) return <h1>Loading...</h1>;
+	if (loading) return <Loading/>;
 
 	console.log(data)
 
@@ -43,15 +44,18 @@ const IndexPage = () => {
 				 <Container>
 
 					 <Row>
-						 <Col md={6}>
-							   <h3>Title</h3>
-							 <YouTube opts={opts} videoId="HkEyJfwm1BQ"/>
-						 </Col>
-						 <Col md={6}>
-							 <h3>Title</h3>
-							 <YouTube opts={opts} videoId="2g811Eo7K8U"/>
-						 </Col>
+						 {data.videos.entities.map((video) => {
+							 return (
+								 <Col className="mb-3" key={video.fieldVideoId} md={6}>
+
+									<YouTube opts={opts} videoId={video.fieldVideoId}/>
+								</Col>
+
+							 )
+						 })}
+
 					 </Row>
+					 
 
 				 </Container>
 
@@ -65,7 +69,7 @@ const IndexPage = () => {
 				 `
 		.bannercontainer {
 		 height: 600px;
-		 background: url(/header3.jpg) no-repeat #000;
+		 background: url(${data.homeimage.entities[0].fieldBannerImage.entity.fieldMediaImage.url}) no-repeat #000;
 		 overflow: hidden;
 		 background-attachment: fixed;
 		 background-position: 50% 0;
