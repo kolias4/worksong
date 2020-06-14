@@ -22,6 +22,8 @@ query {
 
     videos:nodeQuery(filter: {conditions: [{field:"type",value:"Video"}]},limit: 4){
 
+      
+
 
 
   entities{

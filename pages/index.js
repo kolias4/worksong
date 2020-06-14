@@ -39,7 +39,14 @@ const IndexPage = () => {
 
 			 </div>
 
-			 <section className="bandvideos spacesection">
+
+
+			 <section className="bandvideos padsection">
+
+				 <div className="d-flex flex-column align-items-center mb-4">
+					<h3>Videos</h3>
+					<img src="/underline.png" alt="underline"/>
+				</div>
 
 				 <Container>
 
@@ -55,13 +62,20 @@ const IndexPage = () => {
 						 })}
 
 					 </Row>
-					 
+
 
 				 </Container>
+
+				  <div className="buttoncontainer text-center">
+						<Link href="/videos">
+							<a className="btn btn-orange">More Videos</a>
+						</Link>
+					</div>
 
 
 
 			 </section>
+
 
 
 

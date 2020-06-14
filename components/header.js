@@ -6,9 +6,12 @@ import { withApollo } from '../libs/apollo';
 import { useQuery } from '@apollo/react-hooks';
 import { MENU } from '../gql/menu';
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 
 const Header = ()=> {
+
+  const router = useRouter()
 
   const { loading, error, data } = useQuery(MENU);
   if (error) return <h1>Error</h1>;
@@ -29,7 +32,7 @@ const Header = ()=> {
   {data.menu.links.map((item) => {
     return (
       <Link href={item.url.path}>
-        <a className="nav-link">{item.label}</a>
+        <a className={`nav-link ${item.url.path === router.pathname?'active':''}`}>{item.label}</a>
 
       </Link>
     )

@@ -12,7 +12,7 @@ const Footer = () => {
 
   const { loading, error, data } = useQuery(FOOTER);
   if (error) return <h1>Error</h1>;
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return null;
 
   console.log(data)
 
