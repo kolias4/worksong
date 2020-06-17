@@ -42,6 +42,11 @@ const VideoPage = () => {
     <Layout>
     <section className="bandvideos padsection">
 
+      <div className="d-flex flex-column align-items-center mb-4">
+       <h3>Videos</h3>
+       <img src="/underline.png" alt="underline"/>
+     </div>
+
       <Container>
 
         <Row>
@@ -64,7 +69,7 @@ const VideoPage = () => {
 
     </section>
 
-    <section className="Pagination spacesection d-flex justify-content-center">
+    <section className="Pagination  d-flex justify-content-center">
 
       <Pagination>
 

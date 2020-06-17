@@ -19,11 +19,20 @@ const Header = ()=> {
 
   console.log(data)
 
+  var logo = data.logo.entities[0] && data.logo.entities[0].fieldLogo.entity.fieldMediaImage.derivative.url
+
 
     return (
       <div className="header">
         <Navbar   className="my_navbar" expand="lg">
-<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+<Navbar.Brand href="#home">
+  <Link href="/">
+    <a>
+      <img src={logo} alt="logo"/>
+    </a>
+  </Link>
+
+</Navbar.Brand>
  <Navbar.Toggle aria-controls="basic-navbar-nav" >
   <FontAwesomeIcon style={{color:'white'}}  icon={faBars} size="2x" />
 </Navbar.Toggle>

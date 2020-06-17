@@ -3,6 +3,31 @@
 // body {
 //   background:#080c19;
 // }
+
+@font-face {
+    font-family: Ubuntu;
+    src: url(/fonts/Ubuntu-Light.otf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: Ubuntu;
+    src: url(/fonts/Ubuntu-Regular.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Ubuntu;
+    src: url(/fonts/Ubuntu-Italic.otf);
+    font-weight: normal;
+    font-style: italic;
+}
+@font-face {
+    font-family: Ubuntu;
+    src: url(/fonts/Ubuntu-Bold.otf);
+    font-weight: bold;
+}
+body{
+  font-family: Ubuntu,sans-serif,monospace;
+}
 $navbg:#080c19;
 
 .spacesection {
@@ -24,8 +49,12 @@ $navbg:#080c19;
 }
 
 .bandvideos {
-  background: $navbg;
+  background: lighten($navbg, 5%);
   color: white;
+}
+
+.Pagination {
+  background: lighten($navbg, 5%);
 }
 
 .btn-orange {

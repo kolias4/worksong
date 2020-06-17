@@ -20,9 +20,9 @@ query {
     }
 
 
-    videos:nodeQuery(filter: {conditions: [{field:"type",value:"Video"}]},limit: 4){
+    videos:nodeQuery(filter: {conditions: [{field:"type",value:"Video"},{field:"status",value:"1"}]},limit: 4,sort:{field:"sticky",direction:DESC}){
 
-      
+
 
 
 
