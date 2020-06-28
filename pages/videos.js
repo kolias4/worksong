@@ -8,6 +8,8 @@ import {Container,Row,Col,Pagination} from 'react-bootstrap'
 import Layout from '../components/layout'
 import YouTube from 'react-youtube';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
+
 
 const VideoPage = () => {
   const router = useRouter()
@@ -40,6 +42,10 @@ const VideoPage = () => {
 
   return (
     <Layout>
+    <Head>
+  <title>Videos | Theworksongsproject</title>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+</Head>
     <section className="bandvideos padsection">
 
       <div className="d-flex flex-column align-items-center mb-4">

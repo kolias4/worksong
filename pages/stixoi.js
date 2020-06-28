@@ -8,6 +8,7 @@ import {Container,Row,Col,Accordion,Card,Button} from 'react-bootstrap'
 import Layout from '../components/layout'
 import YouTube from 'react-youtube';
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const StixoiPage = () => {
 
@@ -21,6 +22,10 @@ const StixoiPage = () => {
 
   return (
     <Layout>
+      <Head>
+    <title>Lyrics | Theworksongsproject</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  </Head>
     <section className="bandvideos padsection">
 
       <div className="d-flex flex-column align-items-center mb-4">

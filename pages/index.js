@@ -11,6 +11,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 import { faYoutube } from "@fortawesome/free-brands-svg-icons"
 import Layout from '../components/layout'
 import YouTube from 'react-youtube';
+import Head from 'next/head'
 
 
 
@@ -34,6 +35,11 @@ const IndexPage = () => {
 	return (
 
 		 <Layout>
+
+		 <Head>
+	 <title>Theworksongsproject</title>
+	 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+ </Head>
 
 			 <div className="bannercontainer">
 
